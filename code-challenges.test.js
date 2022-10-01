@@ -23,6 +23,7 @@ describe("colorsArr", () => {
   })
 })
 
+
 const colors1 = ["purple", "blue", "green", "yellow", "pink"]
 // Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]
 const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"]
@@ -31,36 +32,74 @@ const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "s
 // ReferenceError: colorsArr is not defined
 
 // b) Create the function that makes the test pass.
-const colorsArr = colors1.slice(1, 5)
 
-colorsArr.sort((a, b) => 0.5 - Math.random())
-return colorsArr
-// console.log(colorsArr)
+/* Psuedo code.... Wow, where do I start? I had a heck of a time fighting with this to get it to work. First I started with the .slice method, but that wouldn't work because both arrays had a different number of elements. Then I used .shift which was the right direction, but I couldn't figure out how to run both expects in the same test, so I had to create two different tests to get it to pass.
+
+1. create a new function
+2. pass the array into the function
+3. use .shift() to remove the first element
+4. use .sort along with math.random to randomly select the order of the elements
+5. return colors1
+6. repeat process for colors2
+*/
+const colorsArr = () => {
+    colors1.shift()
+    colorsArr.sort((a, b) => 0.5 - Math.random())
+    return colorsArr
+}
+
+// const colorsArr2 = () => {
+//     colors2.shift()
+//     colors2.sort((a, b) => 0.5 - Math.random())
+//     return colors2
+// }
+
+//  PASS  ./code-challenges.test.js
+
 
 // --------------------2) Create a function that takes in an object that contains up votes and down votes and returns the net total of votes.
 
 // a) Create a test with expect statements for each of the variables provided.
 
 
-// describe("netVotes", () => {
+// describe("votes1", () => {
 //   it("returns the net total of votes", () => {
-//     expect(netVotes(votes1)).toEqual(11)
-//     expect(netVotes(votes2)).toEqual(-31)
+//     expect((votes1)).toEqual(11)
 //   })
+
+//   describe("votes2", () => {
+//     it("returns the net total of votes", () => {
+//     expect(netVotes(votes2)).toEqual(-31)
+//     })
 // })
 
-// const votes1 = {upVotes: 13, downVotes: 2}
-// // Expected output: 11
-// const votes2 = {upVotes: 2, downVotes: 33}
-// // Expected output: -31
-
-// // ReferenceError: netVotes is not defined
-
-// // b) Create the function that makes the test pass.
-
-// const netVotes = () => {
-//   return votes1.split
+// const votes1 = {
+//     upVotes: 13,
+//     downVotes: 2,
+//     getData: function () {
+//       return `${this.upVotes}` - `${this.downVotes}`
 // }
+// }
+// console.log(votes1.getData())
+
+
+
+// Expected output: 11
+// const votes2 = {
+//     upVotes: 2,
+//     downVotes: 33,
+//     getData: function () {
+//       return `${this.upVotes}` - `${this.downVotes}`
+// }
+// }
+// console.log(votes2.getData())
+
+// Expected output: -31
+
+// ReferenceError: netVotes is not defined
+
+// b) Create the function that makes the test pass.
+
 
 
 
