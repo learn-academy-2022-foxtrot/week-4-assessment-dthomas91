@@ -21,13 +21,14 @@
 describe("colorsArr", () => {
   it("removes the first item from the array and shuffles the remaining content", () => {
     expect(colorsArr(colors1)).toEqual(expect.arrayContaining(["yellow", "blue", "pink", "green"]))
+    expect(colorsArr(colors2)).toEqual(expect.arrayContaining(["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]))
   })
 })
 
-describe("colorsArr2", () => {
-    it("removes the first item from the array and shuffles the remaining content", () => {expect(colorsArr2(colors2)).toEqual(expect.arrayContaining(["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]))
-    })
-  })
+// describe("colorsArr2", () => {
+//     it("removes the first item from the array and shuffles the remaining content", () => {expect(colorsArr2(colors2)).toEqual(expect.arrayContaining(["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]))
+//     })
+//   })
 
 
 const colors1 = ["purple", "blue", "green", "yellow", "pink"]
@@ -45,21 +46,23 @@ const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "s
 2. pass the array into the function
 3. use .shift() to remove the first element
 4. use .sort along with math.random to randomly select the order of the elements
-5. return colors1
-6. repeat process for colors2
+5. return array
+*/
+
+/* ok so after much time and frustration and coaching from joseph I got it to pass the both colors1 and colors2 in the same test and with one code. I don't think I can accurately describe how dificult these javascript challenges have been for me.
 */
 
 const colorsArr = (array) => {
-    colors1.shift()
-    colors1.sort((a, b) => 0.5 - Math.random())
-    return colors1
+    array.shift()
+    array.sort((a, b) => 0.5 - Math.random())
+    return array
 }
 
-const colorsArr2 = () => {
-    colors2.shift()
-    colors2.sort((a, b) => 0.5 - Math.random())
-    return colors2
-}
+// const colorsArr = () => {
+//     colors2.shift()
+//     colors2.sort((a, b) => 0.5 - Math.random())
+//     return colors2
+// }
 
 //  PASS  ./code-challenges.test.js
 
@@ -69,50 +72,45 @@ const colorsArr2 = () => {
 // a) Create a test with expect statements for each of the variables provided.
 
 
-// describe("votes1", () => {
-//   it("returns the net total of votes", () => {
-//     expect(votes1.getData()).toEqual(11)
-//   })
+describe("sumVotes", () => {
+  it("returns the net total of votes", () => {
+    expect(sumVotes(votes1)).toEqual(11)
+    expect(sumVotes(votes2)).toEqual(-31)
+  })
+})
 
-//   describe("votes2", () => {
-//     it("returns the net total of votes", () => {
-//     expect(votes2(votes2)).toEqual(-31)
-//     })
-// })
 
-// ReferenceError: netVotes is not defined
+// ReferenceError: sumVotes is not defined
 
-// const votes1 = upVotes: 13, downVotes: 2
-// const votes2 = upVotes: 2, downVotes: 33
+const votes1 = {upVotes: 13, downVotes: 2}
+// Expected output: 11
+const votes2 = {upVotes: 2, downVotes: 33}
+// Expected output: -31
 
 // b) Create the function that makes the test pass.
 
-// const votes1 = {
-//     upVotes: 13,
-//     downVotes: 2,
-//     getData: function () {
-//         return `${this.upVotes}` - `${this.downVotes}`
-//     }
-// }
-// console.log(votes1.getData())
+/* Psuedocode 
+    1. Create a new function called sumVotes
+    2. Pass an object into the parameters of the function as a placeholder
+    3. Return the value of total votes by returning object.keyname minus object.otherkeyname
+*/
 
-// // Expected output: 11
+const sumVotes = (object) => {
+  return object.upVotes - object.downVotes
+}
 
-// const votes2 = {
-// upVotes: 2,
-// downVotes: 33,
-// getData: function () {
-//   return `${this.upVotes}` - `${this.downVotes}`
-// }
-// }
-// console.log(votes2.getData())
-
-// Expected output: -31
-
+// PASS  ./code-challenges.test.js
 
 // --------------------3) Create a function that takes in two arrays as arguments and returns one array with no duplicate values. STRETCH: Use the spread operator to pass in a dynamic number of arguments.
 
 // a) Create a test with an expect statement using the variables provided.
+
+describe("noDupilicatesArr", () => {
+  it("returns one array with no duplicate values", () => {
+    expect(noDupilicatesArr(dataArray1, dataArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])})
+})
+
+// ReferenceError: noDupilicatesArr is not defined
 
 const dataArray1 = ["array", "object", "number", "string", "Boolean"]
 const dataArray2 = ["string", "null", "Boolean", "string", "undefined"]
@@ -120,3 +118,17 @@ const dataArray2 = ["string", "null", "Boolean", "string", "undefined"]
 
 
 // b) Create the function that makes the test pass.
+
+/* Psuedo code
+    1. create a new function
+    2. Pass in 2 arrays into that function
+    3. Use the string opperator (...) to copy our existing arrays into a new array
+    4. Return the new Set data object because Set does not allow duplicates in the array. Also use the sting opperator on new Set to bring it into the noDuplicatesArr
+
+    ** info for this challenge was found here https://www.samanthaming.com/tidbits/43-3-ways-to-remove-array-duplicates/ 
+*/
+const noDupilicatesArr = (arr1, arr2) => {
+  return [...new Set([...arr1, ...arr2])];
+};
+
+// PASS  ./code-challenges.test.js

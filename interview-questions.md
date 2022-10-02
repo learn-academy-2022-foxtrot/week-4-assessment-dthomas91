@@ -47,3 +47,5 @@ Researched answer: The curly braces contain key value pairs. The values are assi
 4. Active Record: Active Record facilitates the creation and use of business objects whose data requires persistent storage to a database.
 
 5. Migrations: Migrations is a way for you to alter your database in a structured and organized manner. 
+
+
