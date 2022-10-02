@@ -1,5 +1,7 @@
 // ASSESSMENT 4: JavaScript Coding Practical Questions with Jest
 
+// const { array } = require("yargs")
+
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
 // If you get stuck, please leave comments to help us understand your thought process
@@ -19,9 +21,13 @@
 describe("colorsArr", () => {
   it("removes the first item from the array and shuffles the remaining content", () => {
     expect(colorsArr(colors1)).toEqual(expect.arrayContaining(["yellow", "blue", "pink", "green"]))
-    expect(colorsArr(colors2)).toEqual(expect.arrayContaining(["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]))
   })
 })
+
+describe("colorsArr2", () => {
+    it("removes the first item from the array and shuffles the remaining content", () => {expect(colorsArr2(colors2)).toEqual(expect.arrayContaining(["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]))
+    })
+  })
 
 
 const colors1 = ["purple", "blue", "green", "yellow", "pink"]
@@ -42,17 +48,18 @@ const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "s
 5. return colors1
 6. repeat process for colors2
 */
-const colorsArr = () => {
+
+const colorsArr = (array) => {
     colors1.shift()
-    colorsArr.sort((a, b) => 0.5 - Math.random())
-    return colorsArr
+    colors1.sort((a, b) => 0.5 - Math.random())
+    return colors1
 }
 
-// const colorsArr2 = () => {
-//     colors2.shift()
-//     colors2.sort((a, b) => 0.5 - Math.random())
-//     return colors2
-// }
+const colorsArr2 = () => {
+    colors2.shift()
+    colors2.sort((a, b) => 0.5 - Math.random())
+    return colors2
+}
 
 //  PASS  ./code-challenges.test.js
 
@@ -64,43 +71,43 @@ const colorsArr = () => {
 
 // describe("votes1", () => {
 //   it("returns the net total of votes", () => {
-//     expect((votes1)).toEqual(11)
+//     expect(votes1.getData()).toEqual(11)
 //   })
 
 //   describe("votes2", () => {
 //     it("returns the net total of votes", () => {
-//     expect(netVotes(votes2)).toEqual(-31)
+//     expect(votes2(votes2)).toEqual(-31)
 //     })
 // })
+
+// ReferenceError: netVotes is not defined
+
+// const votes1 = upVotes: 13, downVotes: 2
+// const votes2 = upVotes: 2, downVotes: 33
+
+// b) Create the function that makes the test pass.
 
 // const votes1 = {
 //     upVotes: 13,
 //     downVotes: 2,
 //     getData: function () {
-//       return `${this.upVotes}` - `${this.downVotes}`
-// }
+//         return `${this.upVotes}` - `${this.downVotes}`
+//     }
 // }
 // console.log(votes1.getData())
 
+// // Expected output: 11
 
-
-// Expected output: 11
 // const votes2 = {
-//     upVotes: 2,
-//     downVotes: 33,
-//     getData: function () {
-//       return `${this.upVotes}` - `${this.downVotes}`
+// upVotes: 2,
+// downVotes: 33,
+// getData: function () {
+//   return `${this.upVotes}` - `${this.downVotes}`
 // }
 // }
 // console.log(votes2.getData())
 
 // Expected output: -31
-
-// ReferenceError: netVotes is not defined
-
-// b) Create the function that makes the test pass.
-
-
 
 
 // --------------------3) Create a function that takes in two arrays as arguments and returns one array with no duplicate values. STRETCH: Use the spread operator to pass in a dynamic number of arguments.
